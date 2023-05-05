@@ -36,5 +36,9 @@
   "publishConfig": {
     "@ikariiin:registry": "https://npm.pkg.github.com",
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikariiin/library.git"
   }
 }
