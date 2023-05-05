@@ -1,4 +1,4 @@
-name: Library UI Package
+name: Library UI Package Publish
 
 on:
   release:
