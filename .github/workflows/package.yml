@@ -1,8 +1,10 @@
 name: Library UI Package
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -14,6 +16,7 @@ jobs:
           node-version: 20
       - run: yarn install
       - run: yarn build
+      - run: yarn test
 
   publish:
     needs: build
@@ -27,7 +30,11 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
+          scope: "@ikariiin"
       - run: yarn install
+      - run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" && git config --global user.name "$GITHUB_ACTOR"
+      - run: yarn version --minor
+      - run: git push --tags && git push
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
