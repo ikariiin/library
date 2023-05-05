@@ -7,8 +7,11 @@ on:
     branches: [main]
 
 permissions:
-  packages: write
+  deployments: write
   contents: write
+  statuses: write
+  actions: write
+  checks: read
 
 jobs:
   build:
