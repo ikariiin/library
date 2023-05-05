@@ -6,13 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-permissions:
-  deployments: write
-  contents: write
-  statuses: write
-  actions: write
-  checks: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -41,12 +34,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@ikariiin"
       - run: yarn install
-      - run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" && git config --global user.name "$GITHUB_ACTOR"
-      - run: yarn version --minor
-      - uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
