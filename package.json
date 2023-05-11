@@ -11,6 +11,9 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@fontsource/vollkorn": "^4.5.14",
+    "fast-xml-parser": "^4.2.2",
+    "jszip": "^3.10.1",
     "localforage": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
