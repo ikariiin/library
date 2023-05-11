@@ -42,6 +42,18 @@ export class StorageFile {
     return !!(await this.storageInstance.getItem(index));
   }
 
+  public getFile() {
+    return this.file;
+  }
+
+  public getName() {
+    return this.name;
+  }
+
+  public getIndex() {
+    return this.index;
+  }
+
   public static async getAll() {
     const indexInstance = Storage.getIndexStorageInstance();
     const indexes =
@@ -58,9 +70,11 @@ export class StorageFile {
   }
 
   public static async fromIndex(index: StorageIndex) {
-    const indexInstance = Storage.getIndexStorageInstance();
+    const storageInstance = Storage.getFileStorageInstance();
     const indexName = index.indexName;
-    const file = await indexInstance.getItem<SerializedStorageFile>(indexName);
+    const file = await storageInstance.getItem<SerializedStorageFile>(
+      indexName
+    );
     if (!file) {
       throw new Error(`File with index ${indexName} does not exist`);
     }

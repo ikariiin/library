@@ -56,4 +56,13 @@ export class StorageIndex {
     const index = uuid();
     return new StorageIndex(index);
   }
+
+  public static async getAll() {
+    const indexInstance = Storage.getIndexStorageInstance();
+    const indexes =
+      (await indexInstance.getItem<Array<SerializedStorageIndex> | undefined>(
+        config.INDEX_KEY
+      )) ?? [];
+    return indexes.map((index) => new StorageIndex(index.index));
+  }
 }

@@ -1,13 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-const LazyLoadedAdd = lazyImportModule(ModuleType.Feature, "add");
 import { ModuleType, lazyImportModule } from "../import";
+import { dashboardLoader } from "../loaders";
+
+const LazyLoadedDashboard = lazyImportModule(ModuleType.Feature, "dashboard");
+const LazyLoadedAdd = lazyImportModule(ModuleType.Feature, "add");
 
 export function Router(): JSX.Element {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <div>root route</div>,
+      element: <LazyLoadedDashboard />,
+      loader: dashboardLoader,
     },
     {
       path: "/add",
