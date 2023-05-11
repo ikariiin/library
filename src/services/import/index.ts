@@ -10,7 +10,7 @@ export async function importModule<T = Record<string, unknown>>(
   type: ModuleType,
   name: string
 ): Promise<{ default: FunctionComponent<T> }> {
-  const module = await import(`../../${type}s/${name}`);
+  const module = await import(`../../${type}s/${name}/index.tsx`);
   // If there is a default export, use it
   if (module.default) {
     return { default: module.default as FunctionComponent<T> };

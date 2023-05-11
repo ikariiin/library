@@ -1,5 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+const LazyLoadedAdd = lazyImportModule(ModuleType.Feature, "add");
+import { ModuleType, lazyImportModule } from "../import";
+
 export function Router(): JSX.Element {
   const router = createBrowserRouter([
     {
@@ -12,6 +15,7 @@ export function Router(): JSX.Element {
         console.log(param);
         return { param };
       },
+      element: <LazyLoadedAdd />,
     },
     {
       path: "/:id",
