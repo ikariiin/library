@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Router } from "./services/router";
+import { Router } from "@/services/router";
 
 function App() {
   return (
