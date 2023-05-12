@@ -20,12 +20,10 @@ export function ListItemCover({ parser }: ListItemCoverProps) {
   }, [getCover]);
 
   return (
-    <div className="p-2">
-      <img
-        src={imageBase64}
-        alt="cover"
-        className="w-full h-48 object-cover bg-slate-200 rounded-md"
-      />
-    </div>
+    <img
+      src={imageBase64}
+      alt="cover"
+      className="h-40 object-contain rounded-md w-full bg-gray-50"
+    />
   );
 }

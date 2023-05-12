@@ -6,7 +6,7 @@ export default {
     extend: {
       gridTemplateColumns: {
         "main-layout": "1fr 2fr",
-        "list-item-layout": "2fr 3fr",
+        "list-item-layout": "1.3fr 3fr",
       },
     },
     fontFamily: {
